@@ -18,7 +18,7 @@ loginForm.on('submit', function(event) {
 
     $.ajax({
         type: 'GET',
-        url: '/api/login/' + gitUsername + '/' + userPassword,
+        url: '/login/' + gitUsername + '/' + userPassword,
         statusCode: {
             404: function(response) {
                 errorText.text('Incorrect Password')
@@ -30,6 +30,7 @@ loginForm.on('submit', function(event) {
     }).done(function(response) {
         console.log('success?')
         console.log(response)
+        location.href = 'http://www.google.com'
         $('.formErrorText').text("Welcome Back!!!")
     })
 });
@@ -75,7 +76,7 @@ loginDisplayBtn.on('click', function() {
     // show elements of login form
     loginForm.css('display', 'block')
     loginHeading.css('display', 'block')
-    newAccountDisplayBtn.css('display', 'block')
+    newAccountDisplayBtn.css('display', 'inline')
 
     $('.formErrorText').text('')
 })
@@ -89,7 +90,7 @@ newAccountDisplayBtn.on('click', function() {
     // show elements of login form
     newAccountForm.css('display', 'block')
     newAccountHeading.css('display', 'block')
-    loginDisplayBtn.css('display', 'block')
+    loginDisplayBtn.css('display', 'inline')
 
     $('.formErrorText').text('')
 })
