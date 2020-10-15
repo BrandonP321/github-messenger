@@ -30,6 +30,7 @@ loginForm.on('submit', function(event) {
     }).done(function(response) {
         console.log('success?')
         console.log(response)
+        $('.formErrorText').text("Welcome Back!!!")
     })
 });
 
@@ -57,7 +58,7 @@ newAccountForm.on('submit', function(event) {
             }
         }
     }).done(function() {
-        
+
     })
 })
 
