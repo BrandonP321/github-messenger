@@ -55,11 +55,26 @@ router.get('/api/login/:username/:password', function(req, res) {
             return res.json(userInfoObj)
         }
     });
-
-    const testObj = {
-        gitUserName: gitUsername,
-        userPassword: userPassword
-    }
 })
+
+router.post('/account/create/:username/:password/:fname/:lname', function(req, res) {
+    console.log('enroute')
+    connection.query("SELECT * FROM users WHERE gitUserName=?", req.params.username, function(err, data) {
+        if(err) {
+            return res.status(404).end();
+        } else if (data.length > 0) {
+            return res.status(500).end();
+        }
+        const insertValues = [req.params.fname, req.params.lname, req.params.username, req.params.password]
+        connection.query("INSERT INTO users (first_name, last_name, gitUserName, password) VALUES (?, ?, ?, ?)", insertValues, function(err, data) {
+            if(err) {
+                return res.status(404).end();
+            } else {
+                res.json(data)
+            }
+            
+        });
+    });
+});
 
 module.exports = router;

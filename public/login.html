@@ -1,6 +1,7 @@
 <!-- this file is being used as a template for the construction of the handlebars files during development -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,14 +11,18 @@
     <!-- jQuery UI stylesheet -->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <!-- universal stylesheet -->
-    <link type='text/css' rel='stylesheet' href='assets/css/style.css'>
+    <!-- <link type='text/css' rel='stylesheet' href='assets/css/style.css'> -->
     <!-- local stylesheet -->
     <link type='text/css' rel='stylesheet' href='assets/css/login.css'>
     <title>Login</title>
 </head>
-<body>
+
+<body class='bg-dark'>
     <div class='loginContainer'>
-        <h2>Log in</h2>
+
+        <h2 class='loginHeading'>Log in</h2>
+        <h2 class='newAccountHeading'>Create an Account</h2>
+
         <form class='loginForm'>
             <div class='form-group'>
                 <label for='gitUserNameInput'>Github Username</label>
@@ -29,7 +34,39 @@
             </div>
             <button type="submit" class="btn btn-primary mb-2">Log in</button>
         </form>
+
+        <form class='createAccountForm'>
+            <div class='form-group'>
+                <label for='firstNameInput'>First name</label>
+                <input type='text' class='form-control' id='firstNameInput' name='first-name'>
+            </div>
+            <div class='form-group'>
+                <label for='lastNameInput'>Last name</label>
+                <input type='text' class='form-control' id='lastNameInput' name='last-name'>
+            </div>
+            <div class='form-group'>
+                <label for='newGitUserNameInput'>Enter your current github username</label>
+                <input type='text' class='form-control' id='newGitUserNameInput' name='username'>
+            </div>
+            <div class='form-group'>
+                <label for='newPassword'>Enter a secure password</label>
+                <input type='password' class='form-control' id='newPassword' name='username'>
+                <p>*Please for the love of god don't enter the password you use on github, that would just be
+                    irresponsible</p>
+            </div>
+            <div class='form-group'>
+                <label for='newPasswordReEnter'>Re-enter your password</label>
+                <input type='password' class='form-control' id='newPasswordReEnter' name='username'>
+                <p class='passwordMatchingText'></p>
+            </div>
+            <button type='submit' class='btn btn-primary mb-2'>Create Account</button>
+        </form>
+
         <p class='formErrorText'></p>
+
+        <a class='switchToNewAccountBtn'href='#'>Create account</a>
+        <a class='switchToLoginBtn'href='#'>I already have an account</a>
+
     </div>
 
     <!-- jQuery script -->
@@ -46,4 +83,5 @@
     <!-- local script -->
     <script src='assets/js/login.js'></script>
 </body>
+
 </html>
