@@ -1,9 +1,0 @@
-const mysql = require('mysql')
-
-const connection = mysql.createConnection({
-host: "localhost",
-port: 3306,
-user: "root",
-password: "scooby321",
-database: "github_users_db"
-});

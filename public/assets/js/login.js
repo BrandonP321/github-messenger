@@ -50,9 +50,14 @@ newAccountForm.on('submit', function(event) {
     console.log(userLName)
     
     $.ajax({
-        url: "/account/create/" + newUsername + "/" + newPassword + '/' + userFName + "/" + userLName,
+        url: "/account/create",
         method: "POST",
-        data: {username: newUsername, password: newPassword},
+        data: {
+            gitUserName: newUsername,
+            password: newPassword,
+            first_name: userFName,
+            last_name: userLName
+        },
         statusCode: {
             500: function() {
                 alert('Looks like someone else already has the username')
