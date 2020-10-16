@@ -30,7 +30,7 @@ loginForm.on('submit', function(event) {
     }).done(function(response) {
         console.log('success?')
         console.log(response)
-        location.href = 'http://www.google.com'
+        location.href = '/dashboard'
         $('.formErrorText').text("Welcome Back!!!")
     })
 });
