@@ -1,7 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
     const User_group = sequelize.define('User_group', {
-        user_id: DataTypes.INTEGER,
-        group_id: DataTypes.INTEGER
+        // auto creates FK to users_id
+        // FK groups_id
+    }, {
+        underscored: true
     });
     return User_group;
 };

@@ -34,4 +34,23 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+// Associations
+
+// users
+db.Users.hasMany(db.Messages)
+db.Users.hasMany(db.User_group)
+
+// messages
+db.Messages.belongsTo(db.Users)
+db.Messages.belongsTo(db.Groups)
+
+// all_groups
+db.Groups.hasMany(db.User_group)
+db.Groups.hasMany(db.Messages)
+
+// user_group
+db.User_group.belongsTo(db.Users)
+db.User_group.belongsTo(db.Groups)
+
+
 module.exports = db;

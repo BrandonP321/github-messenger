@@ -53,7 +53,7 @@ newAccountForm.on('submit', function(event) {
         url: "/account/create",
         method: "POST",
         data: {
-            gitUserName: newUsername,
+            git_user_name: newUsername,
             password: newPassword,
             first_name: userFName,
             last_name: userLName

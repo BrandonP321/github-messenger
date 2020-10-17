@@ -1,6 +1,6 @@
 <h1>Dashboard</h1>
 
-<div class='container-fluid bg-primary'>
+<div class='container-fluid'>
 
     <div class='row justify-content-around'>
 
@@ -8,27 +8,27 @@
 
             <div class='listedGroupsContainer card'>
 
-                <a data-toggle='collapse' href='#projectChannelsCollapse' role='button' aria-expanded='false'
+                <a class='collapseHeading' data-toggle='collapse' href='#projectChannelsCollapse' role='button' aria-expanded='false'
                     aria-controls='projectChannelsCollapse'>Project Channels</a>
-                <div class='collapse groupListCollapse' id='projectChannelsCollapse'>
+                <div class='collapse show groupListCollapse' id='projectChannelsCollapse'>
                     {{#each channels}}
-                    <a href='#'>{{name}}</a>
+                    <a class='groupBtn' href='/groups/messages/{{id}}' data-id='{{id}}' data-repoUrl='{{repoUrl}}'>{{name}}</a>
                     {{/each}}
                 </div>
 
-                <a data-toggle='collapse' href='#groupChatsCollapse' role='button' aria-expanded='false'
+                <a class='collapseHeading' data-toggle='collapse' href='#groupChatsCollapse' role='button' aria-expanded='false'
                     aria-controls='groupChatsCollapse'>Group Chats</a>
-                <div class='collapse groupListCollapse' id='groupChatsCollapse'>
+                <div class='collapse show groupListCollapse' id='groupChatsCollapse'>
                     {{#each groups}}
-                    <a href='#'>{{name}}</a>
+                    <a class='groupBtn' href='/groups/messages/{{id}}' data-id='{{id}}'>{{name}}</a>
                     {{/each}}
                 </div>
 
-                <a data-toggle='collapse' href='#dmsCollapse' role='button' aria-expanded='false'
-                    aria-controls='dmsCollapse'>Project Channels</a>
-                <div class='collapse groupListCollapse' id='dmsCollapse'>
+                <a class='collapseHeading' data-toggle='collapse' href='#dmsCollapse' role='button' aria-expanded='false'
+                    aria-controls='dmsCollapse'>Direct Messages</a>
+                <div class='collapse show groupListCollapse' id='dmsCollapse'>
                     {{#each dms}}
-                    <a href='#'>{{name}}</a>
+                    <a class='groupBtn' href='/groups/messages/{{id}}' data-id='{{id}}'>{{name}}</a>
                     {{/each}}
                 </div>
             </div>
