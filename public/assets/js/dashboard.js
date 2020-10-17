@@ -17,7 +17,6 @@ $('.groupBtn').on('click', function() {
         url: '/groups/messages/' + groupId,
         method: "GET"
     }).then(function(response) {
-        console.log(response)
         // store values from response
         const groupMessages = response.messages;
         const groupMembers = response.group_members;
@@ -32,9 +31,18 @@ $('.groupBtn').on('click', function() {
         // iteate through messages arr in reverse order (oldest to newest)
         for (let i = groupMessages.length - 1; i >= 0; i--) {
             let message = groupMessages[i]
+            console.log(message)
             let newMessageDiv = $('<div>')
             newMessageDiv.text(message.message_body)
             newMessageDiv.attr('class', 'message')
+            newMessageDiv.attr('data-ownerId', message.creator_id)
+
+            // make sure to change 1 to the id of the logged in user
+            if (message.creator_id === 1) {
+                // add class letting css know that this message was made by the logged in user
+                newMessageDiv.addClass('createdByUser')
+            }
+
             console.log('appending')
             $('.messageBoardContainer').append(newMessageDiv)
         }

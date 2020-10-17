@@ -2,6 +2,7 @@
     font-size: 1.5rem;
 }
 
+
 .groupBtn {
     display: block;
 }
@@ -22,4 +23,18 @@
 }
 
 .listedGroupsContainer {
+}
+
+.message {
+    background-color: aqua;
+    margin-bottom: 5%;
+    width: 70%;
+    padding: 2%;
+    border-radius: 20px;
+}
+
+.createdByUser {
+    position: relative;
+    left: 30%;
+    background-color: lightgreen;
 }
