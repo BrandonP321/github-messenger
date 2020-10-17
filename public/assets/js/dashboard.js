@@ -2,6 +2,15 @@
 $('.groupBtn').on('click', function() {
     // grab id for the group from data-id attribute
     const groupId = $(this).data('id')
+    // grab stored id for group currently on display
+    const currentlyDisplayedGroup = $('.messageBoardContainer').attr('data-currentGroupId')
+
+    // if the clicked group is already on display, return here and leave page as is
+    if (groupId == currentlyDisplayedGroup) {
+        return false
+    }
+    // set the currenttly displayed group id
+    $('.messageBoardContainer').attr('data-currentGroupId', groupId)
     
     // make request to get all info of the clicked group
     $.ajax({
@@ -17,18 +26,16 @@ $('.groupBtn').on('click', function() {
         // repo url can be null if not a git repo project channel
         const repoUrl = response.repo_url;
 
-        console.log(groupMessages)
+        // clear all messages and group info from page
+        $('.messageBoardContainer').empty();
 
-        console.log(groupMessages.length - 1)
         // iteate through messages arr in reverse order (oldest to newest)
         for (let i = groupMessages.length - 1; i >= 0; i--) {
             let message = groupMessages[i]
-            console.log(message)
             let newMessageDiv = $('<div>')
             newMessageDiv.text(message.message_body)
             newMessageDiv.attr('class', 'message')
             console.log('appending')
-            console.log(newMessageDiv)
             $('.messageBoardContainer').append(newMessageDiv)
         }
     })
