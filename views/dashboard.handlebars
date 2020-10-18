@@ -1,0 +1,94 @@
+<h1>Dashboard</h1>
+
+<div class='container-fluid'>
+
+    <div class='row justify-content-around'>
+
+        <div class='col-md-3'>
+
+            <div class='listedGroupsContainer card'>
+
+                <a class='collapseHeading' data-toggle='collapse' href='#projectChannelsCollapse' role='button'
+                    aria-expanded='false' aria-controls='projectChannelsCollapse'>Project Channels</a>
+                <a class='addGroupBtn addDmGroupBtn' data-groupType='channel' data-toggle='modal'
+                    data-target='#addGroupModal' href='#'>&plus;</a>
+
+                <div class='collapse show groupListCollapse' id='projectChannelsCollapse'>
+                    {{#each channels}}
+                    <a class='groupBtn' href='/groups/messages/{{id}}' data-id='{{id}}'
+                        data-repoUrl='{{repoUrl}}'>{{name}}</a>
+                    {{/each}}
+                </div>
+
+                <a class='collapseHeading' data-toggle='collapse' href='#groupChatsCollapse' role='button'
+                    aria-expanded='false' aria-controls='groupChatsCollapse'>Group Chats</a>
+                <a class='addGroupBtn addDmGroupBtn' data-groupType='groupChat' data-toggle='modal'
+                    data-target='#addGroupModal' href='#'>&plus;</a>
+
+                <div class='collapse show groupListCollapse' id='groupChatsCollapse'>
+                    {{#each groups}}
+                    <a class='groupBtn' href='#' data-id='{{id}}'>{{name}}</a>
+                    {{/each}}
+                </div>
+
+                <a class='collapseHeading' data-toggle='collapse' href='#dmsCollapse' role='button'
+                    aria-expanded='false' aria-controls='dmsCollapse'>Direct Messages</a>
+                <a class='addGroupBtn addDmGroupBtn' data-groupType='dm' data-toggle='modal'
+                    data-target='#addGroupModal' href='#'>&plus;</a>
+
+                <div class='collapse show groupListCollapse' id='dmsCollapse'>
+                    {{#each dms}}
+                    <a class='groupBtn' href='#' data-id='{{id}}'>{{name}}</a>
+                    {{/each}}
+                </div>
+            </div>
+
+        </div>
+
+        <div class='col-md-3'>
+
+            <div class='messageBoardContainer card' data-currentGroupId='-1'>
+                <h2>message board <span><a class='refreshBtn' href='#'>refresh</a></span></h2>
+                {{!-- message list box must be set to flex box with column reverse to auto scroll to bottom --}}
+                <div class='messagesList d-flex flex-column-reverse'></div>
+                <form class='newMessageForm'>
+                    <input type='text' class='form-control newMessageInput' placeholder="New Message">
+                    <button type='submit' class='sendBtn'>Send</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class='col-md-3'>
+
+            <div class='messageGroupInfoContainer card'>
+                <h2>group info</h2>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{{!-- modals --}}
+{{!-- add dm group modal --}}
+<div class="modal fade" id="addGroupModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary newGroupBtn" data-groupType>Create Group</button>
+            </div>
+        </div>
+    </div>
+</div>

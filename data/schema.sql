@@ -32,17 +32,9 @@ CREATE TABLE all_groups (
 CREATE TABLE messages (
     id INT NOT NULL AUTO_INCREMENT,
     creator_id INT NOT NULL,
+    recipient_group_id INT NOT NULL,
     message_body TEXT NOT NULL,
     create_date DATE,
-    PRIMARY KEY (id)
-);
-
--- table for recipients of every message sent, including messages sent to groups (not sure if recipient_id is needed yet?)
-CREATE TABLE message_recipient (
-    id INT NOT NULL AUTO_INCREMENT,
-    -- recipient_id INT NOT NULL,
-    recipient_group_id INT NOT NULL,
-    message_id INT NOT NULL,
     PRIMARY KEY (id)
 );
 

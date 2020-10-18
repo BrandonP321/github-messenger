@@ -18,7 +18,7 @@ loginForm.on('submit', function(event) {
 
     $.ajax({
         type: 'GET',
-        url: '/api/login/' + gitUsername + '/' + userPassword,
+        url: '/login/' + gitUsername + '/' + userPassword,
         statusCode: {
             404: function(response) {
                 errorText.text('Incorrect Password')
@@ -28,9 +28,14 @@ loginForm.on('submit', function(event) {
             }
         }
     }).done(function(response) {
-        console.log('success?')
         console.log(response)
+        localStorage.setItem('git_user_name', response.git_user_name)
+        localStorage.setItem('user_first_name', response.first_name)
+        localStorage.setItem('user_last_name', response.last_name)
+        localStorage.setItem('user_id', response.user_id)
+
         $('.formErrorText').text("Welcome Back!!!")
+        location.href = '/dashboard'
     })
 });
 
@@ -49,16 +54,28 @@ newAccountForm.on('submit', function(event) {
     console.log(userLName)
     
     $.ajax({
-        url: "/account/create/" + newUsername + "/" + newPassword + '/' + userFName + "/" + userLName,
+        url: "/account/create",
         method: "POST",
-        data: {username: newUsername, password: newPassword},
+        data: {
+            git_user_name: newUsername,
+            password: newPassword,
+            first_name: userFName,
+            last_name: userLName
+        },
         statusCode: {
             500: function() {
                 alert('Looks like someone else already has the username')
             }
         }
-    }).done(function() {
+    }).done(function(response) {
+        // set items in local storage to hold user info
+        localStorage.setItem('git_user_name', newUsername)
+        localStorage.setItem('user_first_name', userFName)
+        localStorage.setItem('user_last_name', userLName)
+        localStorage.setItem('user_id', response.id)
 
+        // redirect to dashboard with logged in user
+        location.href = '/dashboard'
     })
 })
 
@@ -75,7 +92,7 @@ loginDisplayBtn.on('click', function() {
     // show elements of login form
     loginForm.css('display', 'block')
     loginHeading.css('display', 'block')
-    newAccountDisplayBtn.css('display', 'block')
+    newAccountDisplayBtn.css('display', 'inline')
 
     $('.formErrorText').text('')
 })
@@ -89,7 +106,7 @@ newAccountDisplayBtn.on('click', function() {
     // show elements of login form
     newAccountForm.css('display', 'block')
     newAccountHeading.css('display', 'block')
-    loginDisplayBtn.css('display', 'block')
+    loginDisplayBtn.css('display', 'inline')
 
     $('.formErrorText').text('')
 })
