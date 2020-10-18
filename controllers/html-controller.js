@@ -23,7 +23,7 @@ router.get('/login/:username/:password', function (req, res) {
     // try to find the user account with the given username
     db.Users.findOne({
         where: {
-            gitUserName: gitUsername
+            git_user_name: gitUsername
         }
     }).then(function (dbUser) {
         // passwords match, send back info on user
@@ -49,7 +49,7 @@ router.post('/account/create', function (req, res) {
     // check if a user account with the given username already exists
     db.Users.findAll({
         where: {
-            gitUserName: req.body.git_user_name
+            git_user_name: req.body.git_user_name
         }
     }).then(function (dbUserList) {
         // if length of returned array contains any users, send 505 error
@@ -57,7 +57,10 @@ router.post('/account/create', function (req, res) {
             return res.status(500).end();
         }
         // if no user account already exists, create a new record in users table
-        db.Users.create(req.body)
+        db.Users.create(req.body).then(function(response) {
+            // send id of new user row to client
+            res.json({id: response.dataValues.id})
+        })
     })
 });
 

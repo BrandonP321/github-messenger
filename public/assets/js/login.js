@@ -28,10 +28,14 @@ loginForm.on('submit', function(event) {
             }
         }
     }).done(function(response) {
-        console.log('success?')
         console.log(response)
-        location.href = '/dashboard'
+        localStorage.setItem('git_user_name', response.git_user_name)
+        localStorage.setItem('user_first_name', response.first_name)
+        localStorage.setItem('user_last_name', response.last_name)
+        localStorage.setItem('user_id', response.user_id)
+
         $('.formErrorText').text("Welcome Back!!!")
+        location.href = '/dashboard'
     })
 });
 
@@ -63,8 +67,15 @@ newAccountForm.on('submit', function(event) {
                 alert('Looks like someone else already has the username')
             }
         }
-    }).done(function() {
+    }).done(function(response) {
+        // set items in local storage to hold user info
+        localStorage.setItem('git_user_name', newUsername)
+        localStorage.setItem('user_first_name', userFName)
+        localStorage.setItem('user_last_name', userLName)
+        localStorage.setItem('user_id', response.id)
 
+        // redirect to dashboard with logged in user
+        location.href = '/dashboard'
     })
 })
 
