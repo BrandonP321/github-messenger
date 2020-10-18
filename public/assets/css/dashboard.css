@@ -33,6 +33,10 @@
     border-radius: 20px;
 }
 
+.messagesList {
+    height: 90%;
+}
+
 .createdByUser {
     position: relative;
     left: 30%;

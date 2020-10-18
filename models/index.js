@@ -37,12 +37,16 @@ db.Sequelize = Sequelize;
 // Associations
 
 // users
-db.Users.hasMany(db.Messages)
+db.Users.hasMany(db.Messages, {
+  foreignKey: {allowNull: false}
+})
 db.Users.hasMany(db.User_group)
 
 // messages
 db.Messages.belongsTo(db.Users)
-db.Messages.belongsTo(db.Groups)
+db.Messages.belongsTo(db.Groups, {
+  foreignKey: {allowNull: false}
+})
 
 // all_groups
 db.Groups.hasMany(db.User_group)

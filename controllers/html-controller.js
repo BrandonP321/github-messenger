@@ -164,4 +164,15 @@ router.get('/groups/messages/:group_id', function (req, res) {
     })
 })
 
+router.post('/api/messages/new', function(req, res) {
+    console.log(req.body)
+    db.Messages.create({
+        message_body: req.body.message_body,
+        UserId: req.body.user_id,
+        GroupId: req.body.group_id
+    }).then(function(data) {
+        res.status(200).end();
+    })
+});
+
 module.exports = router;

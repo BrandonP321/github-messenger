@@ -26,10 +26,10 @@ $('.groupBtn').on('click', function() {
         const repoUrl = response.repo_url;
 
         // clear all messages and group info from page
-        $('.messageBoardContainer').empty();
+        $('.messagesList').empty();
 
         // iteate through messages arr in reverse order (oldest to newest)
-        for (let i = groupMessages.length - 1; i >= 0; i--) {
+        for (let i = 0; i < groupMessages.length; i++) {
             let message = groupMessages[i]
             console.log(message)
             let newMessageDiv = $('<div>')
@@ -44,7 +44,29 @@ $('.groupBtn').on('click', function() {
             }
 
             console.log('appending')
-            $('.messageBoardContainer').append(newMessageDiv)
+            $('.messagesList').append(newMessageDiv)
         }
+    })
+})
+
+// listener on message send button
+$('.sendBtn').on('click', function() {
+    const messageInput = $('.newMessageInput').val()
+
+    // do nothing if user has not entered any input
+    if (!messageInput) {
+        return false
+    }
+
+    $.ajax({
+        url: 'api/messages/new',
+        method: "POST",
+        data: {
+            message_body: messageInput,
+            user_id: 1,
+            group_id: $('.messageBoardContainer').attr('data-currentGroupId')
+        }
+    }).then(function(response) {
+        console.log('message sent')
     })
 })
