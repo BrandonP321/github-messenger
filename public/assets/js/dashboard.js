@@ -75,6 +75,7 @@ $('.sendBtn').on('click', function() {
         }
     }).then(function(response) {
         console.log('message sent')
+        $('.newMessageInput').val('')
         addMessageTextEle(messageInput, localStorage.getItem('user_id'))
     })
 })
