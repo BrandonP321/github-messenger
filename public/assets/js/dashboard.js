@@ -23,8 +23,15 @@ $('.groupBtn, .refreshBtn').on('click', function() {
     // make request to get all info of the clicked group
     $.ajax({
         url: '/groups/messages/' + groupId,
-        method: "GET"
+        method: "GET",
+        beforeSend: function() {
+            // show spinner while loading
+            $('.refreshSpinner').css('display', 'inline-block')
+        }
     }).then(function(response) {
+        // hide spinner
+        $('.refreshSpinner').css('display', 'none')
+
         // store values from response
         const groupMessages = response.messages;
         const groupMembers = response.group_members;

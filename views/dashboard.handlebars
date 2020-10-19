@@ -48,7 +48,11 @@
         <div class='col-md-3'>
 
             <div class='messageBoardContainer card' data-currentGroupId='-1'>
-                <h2>message board <span><a class='refreshBtn' href='#'>refresh</a></span></h2>
+                <h2>message board <span><a class='refreshBtn' href='#'>refresh</a></span>
+                    <div class="spinner-border refreshSpinner" role="status">
+                        <span class="sr-only"></span>
+                    </div>
+                </h2>
                 {{!-- message list box must be set to flex box with column reverse to auto scroll to bottom --}}
                 <div class='messagesList d-flex flex-column-reverse'></div>
                 <form class='newMessageForm'>
@@ -83,7 +87,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
