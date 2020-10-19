@@ -8,10 +8,12 @@
 
             <div class='listedGroupsContainer card'>
 
-                <a class='collapseHeading' data-toggle='collapse' href='#projectChannelsCollapse' role='button'
-                    aria-expanded='false' aria-controls='projectChannelsCollapse'>Project Channels</a>
-                <a class='addGroupBtn addDmGroupBtn' data-groupType='channel' data-toggle='modal'
-                    data-target='#addGroupModal' href='#'>&plus;</a>
+                <div>
+                    <a class='collapseHeading' data-toggle='collapse' href='#projectChannelsCollapse' role='button'
+                        aria-expanded='false' aria-controls='projectChannelsCollapse'>Project Channels</a>
+                    <a class='addGroupBtn addDmGroupBtn' data-groupType='channel' data-toggle='modal'
+                        data-target='#addGroupModal' href='#'>&plus;</a>
+                </div>
 
                 <div class='collapse show groupListCollapse' id='projectChannelsCollapse'>
                     {{#each channels}}
@@ -20,10 +22,12 @@
                     {{/each}}
                 </div>
 
-                <a class='collapseHeading' data-toggle='collapse' href='#groupChatsCollapse' role='button'
-                    aria-expanded='false' aria-controls='groupChatsCollapse'>Group Chats</a>
-                <a class='addGroupBtn addDmGroupBtn' data-groupType='groupChat' data-toggle='modal'
-                    data-target='#addGroupModal' href='#'>&plus;</a>
+                <div>
+                    <a class='collapseHeading' data-toggle='collapse' href='#groupChatsCollapse' role='button'
+                        aria-expanded='false' aria-controls='groupChatsCollapse'>Group Chats</a>
+                    <a class='addGroupBtn addDmGroupBtn' data-groupType='groupChat' data-toggle='modal'
+                        data-target='#addGroupModal' href='#'>&plus;</a>
+                </div>
 
                 <div class='collapse show groupListCollapse' id='groupChatsCollapse'>
                     {{#each groups}}
@@ -31,10 +35,12 @@
                     {{/each}}
                 </div>
 
-                <a class='collapseHeading' data-toggle='collapse' href='#dmsCollapse' role='button'
-                    aria-expanded='false' aria-controls='dmsCollapse'>Direct Messages</a>
-                <a class='addGroupBtn addDmGroupBtn' data-groupType='dm' data-toggle='modal'
-                    data-target='#addGroupModal' href='#'>&plus;</a>
+                <div>
+                    <a class='collapseHeading' data-toggle='collapse' href='#dmsCollapse' role='button'
+                        aria-expanded='false' aria-controls='dmsCollapse'>Direct Messages</a>
+                    <a class='addGroupBtn addDmGroupBtn' data-groupType='dm' data-toggle='modal'
+                        data-target='#addGroupModal' href='#'>&plus;</a>
+                </div>
 
                 <div class='collapse show groupListCollapse' id='dmsCollapse'>
                     {{#each dms}}
@@ -83,7 +89,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
